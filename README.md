@@ -33,7 +33,7 @@ Look up an individual player by sport
       last_name: "Trout",
       position: "CF",
       age: 26,
-      average_position_age_diff: "0.94"
+      average_position_age_diff: "-0.94"
     }
   ]
 }
