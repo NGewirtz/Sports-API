@@ -3,16 +3,13 @@ class Player < ApplicationRecord
     :type, presence: true
   validates :last_name, uniqueness: { scope: [:first_name, :age, :position] }
 
-  def self.find_avg_age_by_position
-    positions = pluck(:position).uniq
+  def self.find_avg_age_by_position(positions)
     avg_hash = {}
     positions.each do |position|
       avg_hash[position] = where('position = ? AND NOT age = 0', position).average(:age).round(2)
     end
     avg_hash
   end
-
-  AVG_AGE_BY_POSITION = find_avg_age_by_position
 
   def self.import_players
     sport = self.name
